@@ -32,3 +32,26 @@ docker run -d --name redis growdane/redis
 ```
 docker run -p 4567 --name webapp --link redis:db -t -i -v $PWD/webapp:/opt/webapp growdane/sinatra /bin/bash
 ```
+
+
+### Tomcat-demo ###
+
+运行fetcher容器下载示例war文件
+```
+docker run -t -i --name sample growdane/fetcher https://tomcat.apache.org/tomcat-7.0-doc/appdev/sample/sample.war
+```
+
+查看卷在宿主机上的目录
+```
+docker inspect -f "{{ .Volumes }}" sample #试验的时候好像获取不到。。
+```
+
+运行tomcat容器
+```
+docker run --name sample_app --volumes-from sample -d -P growdane/tomcat7
+```
+
+访问sample项目
+```
+curl 0.0.0.0::32792/sample/
+```
