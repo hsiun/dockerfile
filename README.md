@@ -15,7 +15,7 @@ docker run -d -P --volumes-from growdane_blog growdane/apache
 ### Sample-demo ###
 创建镜像
 ```
-docker build -t growdane/ngin .
+docker build -t growdane/nginx .
 ```
 
 运行容器
