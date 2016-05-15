@@ -55,3 +55,9 @@ docker run --name sample_app --volumes-from sample -d -P growdane/tomcat7
 ```
 curl 0.0.0.0::32792/sample/
 ```
+
+### Figapp ###
+用于创建web的镜像有错，无论如何都无法启动镜像，从原作者下载的也无法启动。等效的下列命令也无法启动容器。
+```
+docker run -d -p 5000:5000 -v .:/figapp --link redis:redis --name growdane/figapp python app.py
+```
